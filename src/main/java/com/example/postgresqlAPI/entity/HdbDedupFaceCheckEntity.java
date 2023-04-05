@@ -27,11 +27,11 @@ public class HdbDedupFaceCheckEntity {
         FaceId = faceId;
     }
 
-    public boolean isChecked() {
+    public boolean getIsChecked() {
         return IsChecked;
     }
 
-    public void setChecked(boolean checked) {
+    public void setIsChecked(boolean checked) {
         IsChecked = checked;
     }
 }

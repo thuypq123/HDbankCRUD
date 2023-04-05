@@ -34,7 +34,7 @@ public class HdbDeupMatchingController {
         hdbDeupMatchingService.updateHdbDedupMatching(hdbDedupMatching, FaceId);
         return "update successfully";
     }
-    @DeleteMapping("/{FaceId}")
+    @RequestMapping(value = "/{FaceId}", method = RequestMethod.DELETE)
     public String deleteHdbDedupMatching(@PathVariable String FaceId){
         hdbDeupMatchingService.deleteHdbDedupMatching(FaceId);
         return "deleted";

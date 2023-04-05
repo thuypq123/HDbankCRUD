@@ -28,4 +28,14 @@ public class HdbDedupFaceCheckController {
         hdbDedupFaceCheckService.saveHdbDedupFaceCheck(hdbDedupFaceCheckEntity);
         return "save successfully";
     }
+    @PutMapping
+    public String updateDedupFaceCheck(@RequestBody HdbDedupFaceCheckEntity hdbDedupFaceCheckEntity, String FaceId){
+        hdbDedupFaceCheckService.updateHdbDedupFaceCheck(hdbDedupFaceCheckEntity, FaceId);
+        return "Update successfully";
+    }
+    @DeleteMapping("/{FaceId}")
+    public String deleteDedupFaceCheck(@PathVariable String FaceId){
+        hdbDedupFaceCheckService.deleteHdbDedupFaceCheck(FaceId);
+        return "Delete SuccessFul";
+    }
 }
