@@ -3,6 +3,7 @@ package com.example.postgresqlAPI.controller;
 import com.example.postgresqlAPI.entity.HdbDedupMatchingEntity;
 import com.example.postgresqlAPI.service.HdbDedupMatchingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,18 +26,15 @@ public class HdbDeupMatchingController {
         return hdbDedupMatching;
     }
     @PostMapping
-    public String saveHdbDedupMatching(@RequestBody HdbDedupMatchingEntity hdbDedupMatching){
-        hdbDeupMatchingService.saveHdbDedupMatching(hdbDedupMatching);
-        return "Save Sucessfully";
+    public ResponseEntity<String> saveHdbDedupMatching(@RequestBody HdbDedupMatchingEntity hdbDedupMatching){
+        return hdbDeupMatchingService.saveHdbDedupMatching(hdbDedupMatching);
     }
     @PutMapping("/{FaceId}")
-    public String updateHdbDedupMatching(@RequestBody HdbDedupMatchingEntity hdbDedupMatching, @PathVariable String FaceId){
-        hdbDeupMatchingService.updateHdbDedupMatching(hdbDedupMatching, FaceId);
-        return "update successfully";
+    public ResponseEntity<String> updateHdbDedupMatching(@RequestBody HdbDedupMatchingEntity hdbDedupMatching, @PathVariable String FaceId){
+        return hdbDeupMatchingService.updateHdbDedupMatching(hdbDedupMatching, FaceId);
     }
     @RequestMapping(value = "/{FaceId}", method = RequestMethod.DELETE)
-    public String deleteHdbDedupMatching(@PathVariable String FaceId){
-        hdbDeupMatchingService.deleteHdbDedupMatching(FaceId);
-        return "deleted";
+    public ResponseEntity<String> deleteHdbDedupMatching(@PathVariable String FaceId){
+        return hdbDeupMatchingService.deleteHdbDedupMatching(FaceId);
     }
 }
