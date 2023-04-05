@@ -18,6 +18,11 @@ public class HdbDedupFaceCheckImpl implements HdbDedupFaceCheckService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    /***
+     * Function to get all HdbDedupFaceCheck records from database
+     * 
+     * @return A list of HdbDedupFaceCheckEntity objects containing all records.
+     ***/
     @Override
     public List<HdbDedupFaceCheckEntity> getAllHdbDedupFaceCheck() {
         String sql = "SELECT * FROM hdb_dedup_face_check";
@@ -25,6 +30,13 @@ public class HdbDedupFaceCheckImpl implements HdbDedupFaceCheckService {
         return jdbcTemplate.query(sql, rowMapper);
     }
 
+    /***
+     * Function to get a specific HdbDedupFaceCheck record from database by face_id
+     * 
+     * @param {String} FaceId - The face_id of the record to retrieve.
+     * @return The HdbDedupFaceCheckEntity object that corresponds to the given
+     *         face_id.
+     ***/
     @Override
     public HdbDedupFaceCheckEntity getHdbDedupFaceCheckByFaceId(String FaceId) {
         String sql = "SELECT * FROM hdb_dedup_face_check WHERE face_id = ?";
@@ -38,6 +50,15 @@ public class HdbDedupFaceCheckImpl implements HdbDedupFaceCheckService {
         }
     }
 
+    /***
+     * Function to save a new HdbDedupFaceCheckEntity record to the database
+     * 
+     * @param {HdbDedupFaceCheckEntity} hdbDedupFaceCheckEntity - The
+     *                                  HdbDedupFaceCheckEntity object to save to
+     *                                  the database.
+     * @return A ResponseEntity with HTTP status code indicating success or failure
+     *         of the save operation.
+     ***/
     @Override
     public ResponseEntity<String> saveHdbDedupFaceCheck(HdbDedupFaceCheckEntity hdbDedupFaceCheckEntity) {
         String sql = "INSERT INTO hdb_dedup_face_check (face_id, is_checked) VALUES (?,?)";
@@ -48,6 +69,17 @@ public class HdbDedupFaceCheckImpl implements HdbDedupFaceCheckService {
         return ResponseEntity.status(HttpStatus.OK).body("Save Successful");
     }
 
+    /***
+     * Function to update a specific HdbDedupFaceCheckEntity record in the database
+     * 
+     * @param {HdbDedupFaceCheckEntity} hdbDedupFaceCheckEntity - The updated
+     *                                  HdbDedupFaceCheckEntity object to save to
+     *                                  the database.
+     * @param {String}                  FaceId - The face_id of the record to
+     *                                  update.
+     * @return A ResponseEntity with HTTP status code indicating success or failure
+     *         of the update operation.
+     ***/
     @Override
     public ResponseEntity<String> updateHdbDedupFaceCheck(HdbDedupFaceCheckEntity hdbDedupFaceCheck, String FaceId) {
         String sql = "UPDATE hdb_dedup_face_check SET face_id = ? WHERE face_id = ?";
@@ -57,15 +89,21 @@ public class HdbDedupFaceCheckImpl implements HdbDedupFaceCheckService {
             return ResponseEntity.status(HttpStatus.OK).body("Updated SuccessFul");
         }
 
-        return  ResponseEntity.status(HttpStatus.FAILED_DEPENDENCY).body("Cannot Update");
+        return ResponseEntity.status(HttpStatus.FAILED_DEPENDENCY).body("Cannot Update");
     }
 
+    /***
+     * Function to delete a specific HdbDedupFaceCheck record from the database
+     * 
+     * @param {String} FaceId - The face_id of the record to delete.
+     * @return A ResponseEntity with HTTP status code indicating success or failure
+     *         of the delete operation.
+     ***/
     @Override
     public ResponseEntity<String> deleteHdbDedupFaceCheck(String FaceId) {
         String sql = "DELETE FROM hdb_dedup_face_check WHERE face_id = ?";
         Object[] args = { FaceId };
         int rowsAffected = jdbcTemplate.update(sql, args);
-
         if (rowsAffected == 0) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Record not found");
         } else {

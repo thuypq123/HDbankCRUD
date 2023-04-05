@@ -18,6 +18,12 @@ public class HdbDedupMatchingImpl implements HdbDedupMatchingService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    /**
+     * Retrieves all entries in the hdb_dedup_matching table.
+     *
+     * @return List<HdbDedupMatchingEntity> A list of all entries in the
+     *         hdb_dedup_matching table.
+     */
     @Override
     public List<HdbDedupMatchingEntity> getAllHdbDedupMatching() {
         String sql = "SELECT * FROM hdb_dedup_matching";
@@ -29,6 +35,12 @@ public class HdbDedupMatchingImpl implements HdbDedupMatchingService {
         });
     }
 
+    /**
+     * Retrieves an entry in the hdb_dedup_matching table based on face_id.
+     *
+     * @param faceId The face ID to search for.
+     * @return HdbDedupMatchingEntity An entry in the hdb_dedup_matching table.
+     */
     @Override
     public HdbDedupMatchingEntity getHdbDedupMatchingByFaceId(String faceId) {
         String sql = "SELECT * FROM hdb_dedup_matching WHERE face_id = ?";
@@ -41,6 +53,13 @@ public class HdbDedupMatchingImpl implements HdbDedupMatchingService {
         });
     }
 
+    /**
+     * Adds a new entry to the hdb_dedup_matching table.
+     *
+     * @param hdbDeupMatching The entry to add.
+     * @return ResponseEntity<String> An HTTP response with either "Inserted
+     *         Successfully" or "Insert failed".
+     */
     @Override
     public ResponseEntity<String> saveHdbDedupMatching(HdbDedupMatchingEntity hdbDeupMatching) {
         String sql = "INSERT INTO hdb_dedup_matching (face_id, matching_face_id) VALUES (?, ?)";
@@ -54,6 +73,14 @@ public class HdbDedupMatchingImpl implements HdbDedupMatchingService {
         }
     }
 
+    /**
+     * Updates an existing entry in the hdb_dedup_matching table.
+     *
+     * @param hdbDedupMatching The updated entry.
+     * @param faceId           The face ID of the entry to update.
+     * @return ResponseEntity<String> An HTTP response with either "Updated
+     *         Successfully" or "Update operation failed".
+     */
     @Override
     public ResponseEntity<String> updateHdbDedupMatching(HdbDedupMatchingEntity hdbDedupMatching, String faceId) {
         String sql = "UPDATE hdb_dedup_matching SET face_id = ?, matching_face_id = ? WHERE face_id = ?";
@@ -66,6 +93,13 @@ public class HdbDedupMatchingImpl implements HdbDedupMatchingService {
         }
     }
 
+    /**
+     * Deletes an entry in the hdb_dedup_matching table based on face_id.
+     *
+     * @param faceId The face ID of the entry to delete.
+     * @return ResponseEntity<String> An HTTP response with either "Deleted
+     *         Successfully" or "Deleted failed".
+     */
     @Override
     public ResponseEntity<String> deleteHdbDedupMatching(String faceId) {
         String sql = "DELETE FROM hdb_dedup_matching WHERE face_id = ?";
@@ -77,4 +111,5 @@ public class HdbDedupMatchingImpl implements HdbDedupMatchingService {
             return ResponseEntity.status(HttpStatus.OK).body("Deleted Successfully");
         }
     }
+
 }

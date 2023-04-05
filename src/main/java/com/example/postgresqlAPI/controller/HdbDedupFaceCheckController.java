@@ -33,7 +33,8 @@ public class HdbDedupFaceCheckController {
     }
 
     @PutMapping
-    public ResponseEntity<String> updateDedupFaceCheck(@RequestBody HdbDedupFaceCheckEntity hdbDedupFaceCheckEntity, String FaceId) {
+    public ResponseEntity<String> updateDedupFaceCheck(@RequestBody HdbDedupFaceCheckEntity hdbDedupFaceCheckEntity,
+            String FaceId) {
         return hdbDedupFaceCheckService.updateHdbDedupFaceCheck(hdbDedupFaceCheckEntity, FaceId);
     }
 
