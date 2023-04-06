@@ -32,8 +32,8 @@ public class HdbDedupFaceCheckController {
         return hdbDedupFaceCheckService.saveHdbDedupFaceCheck(hdbDedupFaceCheckEntity);
     }
 
-    @PutMapping
-    public ResponseEntity<String> updateDedupFaceCheck(@RequestBody HdbDedupFaceCheckEntity hdbDedupFaceCheckEntity,
+    @PutMapping("/{FaceId}")
+    public ResponseEntity<String> updateDedupFaceCheck(@RequestBody HdbDedupFaceCheckEntity hdbDedupFaceCheckEntity, @PathVariable
             String FaceId) {
         return hdbDedupFaceCheckService.updateHdbDedupFaceCheck(hdbDedupFaceCheckEntity, FaceId);
     }

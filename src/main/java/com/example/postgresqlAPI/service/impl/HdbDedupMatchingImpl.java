@@ -69,7 +69,7 @@ public class HdbDedupMatchingImpl implements HdbDedupMatchingService {
         if (rowsInserted == 0) {
             return ResponseEntity.status(HttpStatus.FAILED_DEPENDENCY).body("Insert failed");
         } else {
-            return ResponseEntity.status(HttpStatus.OK).body("Inserted Successfully: " + hdbDeupMatching.toString());
+            return ResponseEntity.status(HttpStatus.OK).body("Inserted Successfully");
         }
     }
 
@@ -87,7 +87,7 @@ public class HdbDedupMatchingImpl implements HdbDedupMatchingService {
         Object[] args = { hdbDedupMatching.getFaceId(), hdbDedupMatching.getMatchingFaceId(), faceId };
         int rowsUpdated = jdbcTemplate.update(sql, args);
         if (rowsUpdated == 0) {
-            return ResponseEntity.status(HttpStatus.FAILED_DEPENDENCY).body("Update operation failed ");
+            return ResponseEntity.status(HttpStatus.FAILED_DEPENDENCY).body("Update failed ");
         } else {
             return ResponseEntity.status(HttpStatus.OK).body("Updated Successfully ");
         }
@@ -106,7 +106,7 @@ public class HdbDedupMatchingImpl implements HdbDedupMatchingService {
         Object[] args = { faceId };
         int rowsDeleted = jdbcTemplate.update(sql, args);
         if (rowsDeleted == 0) {
-            return ResponseEntity.status(HttpStatus.FAILED_DEPENDENCY).body("Deleted failed");
+            return ResponseEntity.status(HttpStatus.FAILED_DEPENDENCY).body("Record not found");
         } else {
             return ResponseEntity.status(HttpStatus.OK).body("Deleted Successfully");
         }

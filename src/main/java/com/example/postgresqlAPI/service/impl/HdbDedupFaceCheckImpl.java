@@ -82,14 +82,18 @@ public class HdbDedupFaceCheckImpl implements HdbDedupFaceCheckService {
      ***/
     @Override
     public ResponseEntity<String> updateHdbDedupFaceCheck(HdbDedupFaceCheckEntity hdbDedupFaceCheck, String FaceId) {
-        String sql = "UPDATE hdb_dedup_face_check SET face_id = ? WHERE face_id = ?";
-        Object[] args = { hdbDedupFaceCheck.getFaceId(), FaceId };
-        int row = jdbcTemplate.update(sql, args);
-        if (row == 0) {
+        try {
+            String sql = "UPDATE hdb_dedup_face_check SET face_id = ?, is_checked = ? WHERE face_id = ?";
+            Object[] args = { hdbDedupFaceCheck.getFaceId(),hdbDedupFaceCheck.getIsChecked(), FaceId };
+            System.out.println("==="+hdbDedupFaceCheck.getFaceId()+"==="+hdbDedupFaceCheck.getIsChecked()+"==="+ FaceId);
+            int row = jdbcTemplate.update(sql, args);
+            if (row == 0) {
+                return ResponseEntity.status(HttpStatus.FAILED_DEPENDENCY).body("duplicate faceId or faceId is not exits");
+            }
             return ResponseEntity.status(HttpStatus.OK).body("Updated SuccessFul");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while updating.");
         }
-
-        return ResponseEntity.status(HttpStatus.FAILED_DEPENDENCY).body("Cannot Update");
     }
 
     /***
