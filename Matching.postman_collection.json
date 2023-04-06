@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "8641ce76-3387-4383-ba54-2c5aea392291",
+		"name": "Matching",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17376248"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/HdbDeupMatching/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/HdbDeupMatching/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HdbDeupMatching",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/HdbDeupMatching",
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "contentType",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "dataType",
+						"value": "json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"matchingFaceId\": \"1212hhh12hhhh00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/HdbDeupMatching",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HdbDeupMatching"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/HdbDeupMatching/ff808081874f1dd101874f51acdd0001",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"faceId\": \"ff808081874f1dd101874f51acdd0001\",\r\n    \"matchingFaceId\": \"123456thunnny\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/HdbDeupMatching/ff808081874f1dd101874f51acdd0001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HdbDeupMatching",
+						"ff808081874f1dd101874f51acdd0001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/HdbDeupMatching/ff808081874f1dd101874f51acdd0001",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/HdbDeupMatching/ff808081874f1dd101874f51acdd0001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HdbDeupMatching",
+						"ff808081874f1dd101874f51acdd0001"
+					],
+					"query": [
+						{
+							"key": "FaceId",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

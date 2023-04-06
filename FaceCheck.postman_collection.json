@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "de394b10-2fd8-496e-be79-b68afeda5273",
+		"name": "FaceCheck",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17376248"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/HdbDedupFaceCheck/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/HdbDedupFaceCheck/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HdbDedupFaceCheck",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/HdbDedupFaceCheck",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isChecked\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/HdbDedupFaceCheck",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HdbDedupFaceCheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/HdbDedupFaceCheck/XO3IfEX4XYOpjEvmNe3hul9KrPM9mun7YyT8w7u3oWNTWzwfj4",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"faceId\": \"1523513\",\r\n    \"ischecked\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/HdbDedupFaceCheck/pu2MnctG61etfp2fnkBsgsUwJpVvH3hppjK31tL5A3UttWhztq",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HdbDedupFaceCheck",
+						"pu2MnctG61etfp2fnkBsgsUwJpVvH3hppjK31tL5A3UttWhztq"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/HdbDedupFaceCheck/XO3IfEX4XYOpjEvmNe3hul9KrPM9mun7YyT8w7u3oWNTWzwfj4",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/HdbDedupFaceCheck/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"HdbDedupFaceCheck",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
